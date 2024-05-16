@@ -1,11 +1,16 @@
-# storage for routes
+from flask import Flask, render_template
 
-from flask import Blueprint
+app = Flask(__name__)
 
-views = Blueprint('views', __name__)
-
-@views.route('/')
+@app.route("/")
+@app.route("/home")
 def home():
-    return '<h1>Test</h1>'
+    return render_template('home.html')
 
+@app.route("/about")
+def about():
+    return "<h1>About Page</h1>"
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
